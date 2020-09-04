@@ -31,11 +31,11 @@ func New(opt ...Option) (r Render) {
 	return
 }
 
-func (this Render) Option(opt ...Option) (r Render) {
+func (this Render) Option(opt ...Option) Render {
 	for _, opt := range opt {
-		r = opt(r)
+		this = opt(this)
 	}
-	return
+	return this
 }
 
 func (this Render) exec(dst http.ResponseWriter, fileName string) (err error) {
